@@ -1,0 +1,157 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'dist/css/adminlte.min.css' %}" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/fontawesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <title>FootballPlaysMaker</title>
+    <style>
+      /* @font-face {
+  font-family: 'Halvetica-Bold';
+  src: URL("{% static 'dist/Halvetica-Bold.ttf' %}") format('truetype');
+} */
+    </style>
+  </head>
+
+  <body style="background-color: #333;font-family: Helvetica;font-style: bold;">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarTogglerDemo01"
+        aria-controls="navbarTogglerDemo01"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <a class="navbar-brand" href="#">FootballPlaysMaker</a>
+        <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+          <li class="nav-item active">
+            <a class="nav-link" href="/"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/lists">Lists</a>
+          </li>
+        </ul>
+       
+
+        <a
+          href="/logout"
+          style="margin-left: 10px"
+          class="btn btn-outline-danger my-2 my-sm-0"
+          type="submit"
+          >Logout</a
+        >
+      </div>
+    </nav>
+    <div class="jumbotron jumbotron-fluid" style="background-color:#262626; color: white;">
+      <div class="container">
+        <h1 class="display-4">FootballPlaysMaker</h1>
+        <p class="lead">
+          Make a List of questions and test yourself.<br />Welcome
+          <b>{{user.first_name}} {{user.last_name}}</b>
+        </p>
+      </div>
+    </div>
+
+
+
+    <section class="content " style="margin-top: 100px;">
+      <div class="container-fluid text-center d-flex justify-content-center" >
+        <div class="row " style="width: 60%; " >
+          <div class="col-4 ">
+            <!-- small box -->
+            <div class="small-box bg-info">
+              <div class="inner">
+                <i class="fa fa-plus" aria-hidden="true"></i>
+
+                <p>Creat New List</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-bag"></i>
+              </div>
+              <a href="/createlist" class="small-box-footer" data-bs-toggle="modal" data-bs-target="#exampleModal"
+                ><i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-4">
+            <!-- small box -->
+            <div class="small-box bg-success">
+              <div class="inner">
+                <ion-icon name="football-outline"></ion-icon>
+
+                <p>Test Yourself</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-stats-bars"></i>
+              </div>
+              <a href="/lists" class="small-box-footer"
+                > <i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+          <!-- ./col -->
+          <div class="col-4">
+            <!-- small box -->
+            <div class="small-box bg-warning">
+              <div class="inner">
+                <ion-icon name="list-circle-outline"></ion-icon>
+
+                <p>Check Results</p>
+              </div>
+              <div class="icon">
+                <i class="ion ion-person-add"></i>
+              </div>
+              <a href="/results" class="small-box-footer"
+                ><i class="fas fa-arrow-circle-right"></i
+              ></a>
+            </div>
+          </div>
+          <!-- ./col -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+  </body>
+</html>
