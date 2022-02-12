@@ -1,8 +1,10 @@
 from django.shortcuts import redirect, render
 from .models import *
-# Create your views here.
+# Create your views here.'
+# views are essentially functiosn that returns an HTML template, HTTP responses nand others when called
+
 def index(request):
-    # checking if user is logged in
+    # checks if user is logged in
     if 'user' not in request.session:
         return redirect('/login')
     user = User.objects.get(id=request.session['user'])
@@ -66,7 +68,7 @@ def checkUser(request):
 
 
 def lists(request):
-    # checking if user is logged in
+    #this is checking if user is logged in
     if 'user' not in request.session:
         return redirect('/login')
     user = User.objects.get(id=request.session['user'])
@@ -93,7 +95,7 @@ def add_question(request,list_id):
     if request.method == 'GET':
         return render(request, 'add_question.html', {'list': list})
 
-def createquestion(request):
+def createquestion(request): #this functions creates the questions (or start a new flash card) basically. 
     if request.method == 'POST':
         # get data from form
         name = request.POST['name']
