@@ -4,14 +4,14 @@ from .models import *
 # views are essentially functiosn that returns an HTML template, HTTP responses nand others when called
 
 def index(request):
-    # checks if user is logged in
+    # this checks if user is logged in
     if 'user' not in request.session:
         return redirect('/login')
     user = User.objects.get(id=request.session['user'])
     return render(request, 'index.html', {'user': user})
 
 def login(request):
-    # if user is logged in then dont go to login page
+    # if user is logged in --> dont go to login page
     if 'user' in request.session:
         return redirect('/')
     return render(request, 'login.html')
@@ -31,16 +31,16 @@ def createUser(request):
         password1 = request.POST['password1']
         password2 = request.POST['password2']
 
-        # check if passwords match
+        #this checks if passwords match
         if password1 != password2:
             return render(request, 'register.html', {'error': 'Passwords do not match'})
         user = User.objects.filter(email=email)
-        # check if email is already in use
+        #this checks if email is already in use
         if len(user) > 0:
             return render(request, 'register.html', {'error': 'Email already in use'})
         user = User(first_name=fname, last_name=lname, email=email, password=password1)
         user.save()
-        # save user in session
+        #save user in session
         request.session['user'] = user.id
         return redirect('/')
 
@@ -145,11 +145,10 @@ def attempt(request,id):
                                     options_without_correct[random.randint(0,len(options_without_correct)-2)].correct_phrase,
                                     options_without_correct[random.randint(0,len(options_without_correct)-2)].correct_phrase]
             # randomizing options
-            random.shuffle(opts)
+            random.shuffle(opts) # this is so that the questions dont repeat, and the players can remember the plays more effectively. 
             question = {}
             question['question'] = ques
             question['options'] = opts
-        
             questions_new.append(question)
         # shuffling the list of questions
         random.shuffle(questions_new)
