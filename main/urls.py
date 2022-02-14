@@ -22,3 +22,4 @@ urlpatterns = [
     path('attempt/<int:id>', attempt, name='attempt'),
     path('submitquizresult', submitquizresult, name='submitquizresult'),
 ]
+#this is where all the signals are created, so that the python files are connected to the html

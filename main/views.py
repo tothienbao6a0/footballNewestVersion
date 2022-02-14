@@ -126,6 +126,7 @@ def results(request):
         # getting all scores
         scores = Score.objects.all()
         return render(request, 'results.html', {'scores': scores})
+        #the results are displayed
 
 import random
 def attempt(request,id):
@@ -152,8 +153,9 @@ def attempt(request,id):
             questions_new.append(question)
         # shuffling the list of questions
         random.shuffle(questions_new)
+        #the questions are shuffled, and the new quiz is selected. 
         return render(request, 'attempt.html', {'user': user, 'list': list, 'questions': questions_new})
-
+ 
 
 def submitquizresult(request):
     list_id = request.POST['list']
@@ -166,3 +168,5 @@ def submitquizresult(request):
     score = Score(user=User.objects.get(id=request.session['user']), list=list, score=correct)
     score.save()
     return redirect('/results')
+    #this view sends a signal to check if the id of the question is the same as that of the answer, if it is then add a point to the result of the user. 
+    #the score is then saved and the results is shown
